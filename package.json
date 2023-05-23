@@ -4,7 +4,7 @@
   "description": "TypeScript Basic Template",
   "scripts": {
     "start": "tsc src/index.ts",
-    "build": "tsc && shx rm -rf build/template && shx cp -r template build"
+    "build": "tsc && shx rm -rf build/templates && shx cp -r templates build"
   },
   "bin": {
     "create-basic-ts-template": "./build/index.js"
