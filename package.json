@@ -1,6 +1,6 @@
 {
   "name": "create-basic-ts-template",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript Basic Template",
   "scripts": {
     "start": "tsc src/index.ts",
