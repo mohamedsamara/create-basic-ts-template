@@ -1,12 +1,16 @@
 #!/usr/bin/env node
 
-import * as inquirer from "inquirer";
-import * as fs from "fs";
-import * as path from "path";
-import * as shell from "shelljs";
-import * as template from "./utils/template";
+import inquirer from "inquirer";
 import chalk from "chalk";
-import * as yargs from "yargs";
+import fs from "fs";
+import path from "path";
+import shell from "shelljs";
+import yargs from "yargs";
+import { fileURLToPath } from "url";
+import * as template from "./utils/template.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const CHOICES = fs.readdirSync(path.join(__dirname, "templates"));
 
@@ -16,13 +20,11 @@ const QUESTIONS = [
     type: "list",
     message: "What project template would you like to generate?",
     choices: CHOICES,
-    when: () => !yargs.argv["template"],
   },
   {
     name: "name",
     type: "input",
     message: "Project name:",
-    when: () => !yargs.argv["name"],
     validate: (input: string) => {
       if (/^([A-Za-z\-\_\d])+$/.test(input)) return true;
       else
@@ -45,7 +47,6 @@ export interface CliOptions {
   targetPath: string;
   config: TemplateConfig;
 }
-
 inquirer.prompt(QUESTIONS).then((answers) => {
   answers = Object.assign({}, answers, yargs.argv);
 
