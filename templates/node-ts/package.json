@@ -1,7 +1,6 @@
 {
   "name": "<%= projectName %>",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "clean": "rimraf ./build",
     "build": "npm run clean && tsc",
