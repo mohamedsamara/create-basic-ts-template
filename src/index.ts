@@ -12,7 +12,9 @@ import * as template from "./utils/template.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const CHOICES = fs.readdirSync(path.join(__dirname, "templates"));
+const CHOICES = fs
+  .readdirSync(path.join(__dirname, "templates"))
+  .filter((item) => !/(^|\/)\.[^/.]/g.test(item));
 
 const QUESTIONS = [
   {
