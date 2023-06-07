@@ -1,16 +1,22 @@
+import { useAuth } from 'lib/hooks';
 import Layout from 'layouts/default';
 
 export const HOME_TEST_ID = 'home';
 
 const Home = () => {
+  const { authenticated } = useAuth();
+
   return (
     <Layout>
       <div
         data-testid={HOME_TEST_ID}
-        className="h-full bg-gradient-to-b from-[#2013c1] to-[#4c137c]"
+        className="container max-w-sm min-h-full px-4 py-12 mx-auto"
       >
         <div className="flex flex-col items-center content-center justify-end h-full">
-          <h4 className="mb-6 text-3xl text-[#f1c50e]">Vite React</h4>
+          <h4 className="mb-6 text-3xl">Vite React</h4>
+          <p className="mt-4 text-gray-400">
+            {authenticated ? 'Authenticated' : 'Not Authenticated'}
+          </p>
         </div>
       </div>
     </Layout>
